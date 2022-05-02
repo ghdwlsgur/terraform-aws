@@ -38,7 +38,7 @@ plan의 작동 방식을 이해하기 위해서는 테라폼의 동작 방식을
 
 `terraform apply`를 실행하고 나면 프로젝트 상에 중요한 변화가 하나 생기는데 작업 디렉터리 아래 `terraform.tfstate` 파일이 하나 생성됩니다. 이 파일에는 실제 상태를 임시로 저장하는 동시에 테라폼에서 관리되는 리소스의 목록을 관리합니다.
 
-### endpoint check (EC2)
+### `endpoint check (EC2)`
 
 ```bash
 terraform console
@@ -46,7 +46,7 @@ aws_instance.web.public_ip
 aws_instance.ec2명.public_ip
 ```
 
-### endpoint check (RDS)
+### `endpoint check (RDS)`
 
 ```bash
 terraform console
@@ -54,13 +54,23 @@ aws_db_instance.web_db.endpoint
 aws_db_instance.rds명.endpoint
 ```
 
-### ec2에서 rds 서버 접속
+### `ec2에서 rds 서버 접속`
 
 ```bash
 sudo yum install -y mysql
 mysql -h [RDS 엔드포인트] -u admin -p
 ```
 
-### 비밀번호
+### 임시 비밀번호 설정
 
 코드상에 config 정보를 노출시키지 않기 위해 TLS 통신으로 가져온다고 해도 `terraform.tfstate` 파일에 노출되므로 임시 비밀번호를 설정하고 `apply`후에 비밀번호 재설정할 것.
+
+## Why ? 테라폼을 사용하는 이유
+
+웹 콘솔을 사용해 리소스를 관리하는 것과는 많이 다릅니다. 프로젝트에서 테라폼을 사용해보면 매번 리소스 레퍼런스를 확인하고 웹 콘솔과 비교해보는 과정을 계속해서 반복해야 합니다. 어떤 면에서는 웹 콘솔보다 오히려 어렵고 귀찮습니다.
+
+그럼에도 불구하고 테라폼을 사용하면 좋은 점들이 있습니다. 먼저 웹 콘솔을 사용해 리소스들을 관리하면서 점차 리소스가 많아지기 시작하면 더 이상 전체 리소스를 파악할 수 없는 시점이 옵니다. 업무용으로 사용하는 경우 명시적인 리소스와 비명시적인 리소스를 포함해 수백 수천개의 리소스를 다루는 일이 일반적입니다. 언제 왜 만들었는지 알 수 없는 리소스들이 점점 쌓여나가고 레거시로 남습니다. 테라폼을 사용하면 프로비저닝하고자 하는 상태를 코드로 명확히 기록해두기 때문에 웹 콘솔만 사용할 때보다 파악이 쉬워지고 세심한 관리가 가능해집니다.
+
+또한 테라폼은 코드로서의 인프라스트럭쳐`(Infrastructure as a Code)`를 지향하는 도구로서 코드를 작성할 때 누리던 생태계의 이점을 그대로 이용할 수 있습니다. 저장소에서 이력 추적을 할 수도 있고 깃허브(Github)에서 팀원들과 코드 리뷰를 진행할 수도 있습니다. 이 과정에서 누가 어떤 리소스를 왜 추가했는지 투명성은 자동적으로 얻어집니다. 좀 더 잘 활용한다면 CI를 사용해 코드 리뷰가 된 사항을 자동적으로 플랜 및 저굥하는 것도 가능합니다.
+
+참고자료: [테라폼(Terraform) 기초 튜토리얼](https://www.44bits.io/ko/post/terraform_introduction_infrastrucute_as_code)
