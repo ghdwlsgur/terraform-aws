@@ -1,7 +1,4 @@
-
-
-
-
+# ec2 이미지 검색 링크
 # http://cloud-images.ubuntu.com/locator/ec2/
 
 provider "aws" {
