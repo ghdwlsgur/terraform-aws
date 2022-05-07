@@ -18,21 +18,10 @@ brew install hashicorp/tap/vault
 brew upgrade hashicorp/tap/vault
 ```
 
-- 현재 사용중인 쉘 확인
+- vault 서버 접속
 
-```bash
-echo $SHELL
 ```
-
-- 환경변수 추가
-  `export VAULT_ADDR='http://127.0.0.1:8200`
-
-- 설정파일 새로고침
-
-```bash
-source ~/.zshrc
+vault server -dev -dev-root-token-id="education"
 ```
-
-- http://127.0.0.1:8200 접속 token : education
 
 참고자료 : [HashiCorp Learn](https://learn.hashicorp.com/tutorials/terraform/secrets-vault?in=terraform/certification-associate-tutorials)
