@@ -49,7 +49,8 @@ resource "aws_instance" "web" {
     data.aws_security_group.default.id
   ]
 
+
   tags = {
-    Name = "Terraform's EC2"
+    Name = "Terraform's Ubuntu"
   }
 }

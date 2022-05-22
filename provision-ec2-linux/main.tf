@@ -50,6 +50,6 @@ resource "aws_instance" "web" {
   ]
 
   tags = {
-    Name = "Terraform's EC2"
+    Name = "Terraform's Linux"
   }
 }
