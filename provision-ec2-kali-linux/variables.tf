@@ -24,6 +24,6 @@ variable "subnet_id" {
 
 variable "availability_zone" {
   type        = string
-  description = "The AZ to starrt the instance in"
+  description = "The AZ to start the instance in"
   default     = "ap-northeast-2a"
 }
