@@ -34,4 +34,3 @@ variable "ec2_ami" {
   default     = "ami-0cbec04a61be382d9"
 }
 
-

@@ -11,11 +11,4 @@ output "ssh_ec2_kali_linux_connect" {
 }
 
 
-/* ! temp execute1
-
-"terraform show -json | \
-jq -r '.values.root_module.resources[].values | select(.private_key_pem) |.private_key_pem' \
-> ~/.ssh/terraform_private_key.pem"
-
-*/
 

@@ -27,6 +27,12 @@ resource "aws_instance" "linux" {
     command = "terraform output -raw ssh_private_key > ~/.ssh/${aws_key_pair.linux.key_name}.pem && chmod 400 ~/.ssh/${aws_key_pair.linux.key_name}.pem"
   }
 
+  provisioner "local-exec" {
+    when        = destroy
+    command     = "rm -rf ~/.ssh/linux.pem"
+    working_dir = path.module
+  }
+
   root_block_device {
     volume_size = var.volume_size
   }
