@@ -12,8 +12,8 @@ variable "aws_region" {
 
 variable "volume_size" {
   type        = string
-  description = "12GB"
-  default     = "12"
+  description = "8GB"
+  default     = "8"
 }
 
 variable "subnet_id" {
@@ -25,7 +25,7 @@ variable "subnet_id" {
 variable "availability_zone" {
   type        = string
   description = "The AZ to start the instance in"
-  default     = "ap-northeast-2c"
+  default     = "ap-northeast-2a"
 }
 
 variable "ec2_ami" {
