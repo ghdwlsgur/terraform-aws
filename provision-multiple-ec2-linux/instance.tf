@@ -12,7 +12,7 @@ resource "aws_default_subnet" "default" {
 }
 
 resource "aws_instance" "linux" {
-  count = "3"
+  count = "2"
 
   ami                         = var.ec2_ami
   instance_type               = var.instance_type
