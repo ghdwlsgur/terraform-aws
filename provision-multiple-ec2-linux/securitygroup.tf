@@ -3,6 +3,10 @@ data "aws_security_group" "default" {
   name = "default"
 }
 
+data "http" "myip" {
+  url = "http://ipv4.icanhazip.com"
+}
+
 resource "aws_security_group" "linux_security" {
   name        = "linux_security"
   description = "Allow SSH port from anywhere"
@@ -10,7 +14,7 @@ resource "aws_security_group" "linux_security" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks = ["${chomp(data.http.myip.body)}/32"]
   }
 
   ingress {
