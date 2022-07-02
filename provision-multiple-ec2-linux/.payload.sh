@@ -5,4 +5,4 @@ yum update -y
 yum install -y httpd.x86_64
 systemctl start httpd.service
 systemctl enable httpd.service
-echo "Hello World from $(hostname -f)" > /var/www/html/index.html
+echo "Hello World from $(hostname -f) : $(curl -s http://169.254.169.254/latest/meta-data/public-ipv4)" > /var/www/html/index.html
