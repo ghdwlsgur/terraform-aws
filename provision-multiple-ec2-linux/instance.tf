@@ -11,8 +11,13 @@ resource "aws_default_subnet" "default" {
   availability_zone = var.availability_zone
 }
 
+data "aws_ssm_parameter" "secret" {
+  name = "/terraform/subnet-id"
+}
+
+# 서브넷 아이디 지정
 resource "aws_instance" "linux" {
-  count = "2"
+  count = "3"
 
   ami                         = var.ec2_ami
   instance_type               = var.instance_type
@@ -20,7 +25,8 @@ resource "aws_instance" "linux" {
   associate_public_ip_address = true
   key_name                    = aws_key_pair.linux.key_name
   user_data                   = data.template_file.user_data.rendered
-  subnet_id                   = var.subnet_id == null ? aws_default_subnet.default.id : var.subnet_id
+  subnet_id                   = data.aws_ssm_parameter.secret.value
+  # subnet_id                   = var.subnet_id == null ? aws_default_subnet.default.id : var.subnet_id
   vpc_security_group_ids = [
     aws_security_group.linux_security.id
   ]
