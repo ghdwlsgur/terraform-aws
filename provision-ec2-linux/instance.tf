@@ -3,6 +3,8 @@ data "template_file" "user_data" {
   template = file(".payload.sh")
 }
 
+
+
 provider "aws" {
   region = var.aws_region
 }
