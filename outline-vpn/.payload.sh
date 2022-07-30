@@ -1,4 +1,4 @@
-#!bin/bash
+#!/bin/bash
 yum update -y
 sudo yum install jq -y
 sudo yum install docker -y
