@@ -1,7 +1,8 @@
 
 
 resource "aws_vpc_endpoint" "logs" {
-  vpc_id              = "vpc-0d45f4c15f9739f50"
+  vpc_id              = var.vpc_id
+  subnet_ids          = [var.subnet_id]
   service_name        = "com.amazonaws.ap-northeast-2.logs"
   private_dns_enabled = true
   vpc_endpoint_type   = "Interface"
@@ -14,7 +15,8 @@ resource "aws_vpc_endpoint" "logs" {
 }
 
 resource "aws_vpc_endpoint" "ssm" {
-  vpc_id              = "vpc-0d45f4c15f9739f50"
+  vpc_id              = var.vpc_id
+  subnet_ids          = [var.subnet_id]
   service_name        = "com.amazonaws.ap-northeast-2.ssm"
   private_dns_enabled = true
   vpc_endpoint_type   = "Interface"
@@ -27,7 +29,8 @@ resource "aws_vpc_endpoint" "ssm" {
 }
 
 resource "aws_vpc_endpoint" "ssmmessages" {
-  vpc_id              = "vpc-0d45f4c15f9739f50"
+  vpc_id              = var.vpc_id
+  subnet_ids          = [var.subnet_id]
   service_name        = "com.amazonaws.ap-northeast-2.ssmmessages"
   private_dns_enabled = true
   vpc_endpoint_type   = "Interface"
@@ -40,7 +43,8 @@ resource "aws_vpc_endpoint" "ssmmessages" {
 }
 
 resource "aws_vpc_endpoint" "ec2messages" {
-  vpc_id              = "vpc-0d45f4c15f9739f50"
+  vpc_id              = var.vpc_id
+  subnet_ids          = [var.subnet_id]
   service_name        = "com.amazonaws.ap-northeast-2.ec2messages"
   private_dns_enabled = true
   vpc_endpoint_type   = "Interface"
