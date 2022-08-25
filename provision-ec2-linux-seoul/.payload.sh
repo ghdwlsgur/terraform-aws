@@ -8,6 +8,9 @@
 # echo "Hello World from $(hostname -f)" > /var/www/html/index.html
 
 yum update -y 
+sudo curl "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/linux_64bit/session-manager-plugin.rpm" -o "session-manager-plugin.rpm"
+sudo yum install -y session-manager-plugin.rpm
+
 amazon-linux-extras install nginx1.12
 nginx -v
 systemctl start nginx
