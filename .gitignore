@@ -4,3 +4,6 @@ terraform.tfstate
 terraform.tfstate.backup
 **.backup
 .terraform.**
+
+
+.DS_STORE
