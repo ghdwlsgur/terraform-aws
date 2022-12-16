@@ -17,7 +17,7 @@ resource "aws_security_group_rule" "inbound" {
   from_port         = 443
   to_port           = 443
   protocol          = "tcp"
-  cidr_blocks       = ["${chomp(data.http.myip.body)}/32"]
+  cidr_blocks       = ["${chomp(data.http.myip.response_body)}/32"]
   security_group_id = aws_security_group.linux_sg.id
 }
 
@@ -32,5 +32,6 @@ resource "aws_security_group_rule" "outbound" {
 }
 
 data "http" "myip" {
-  url = "http://ipv4.icanhazip.com"
+  url    = "http://ipv4.icanhazip.com"
+  method = "GET"
 }
