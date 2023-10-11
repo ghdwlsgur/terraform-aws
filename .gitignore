@@ -7,7 +7,6 @@ terraform.tfstate.backup
 
 
 .DS_STORE
-
 .infracost
 pricing.gob
 manifest-**
