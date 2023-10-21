@@ -22,36 +22,36 @@ resource "aws_security_group_rule" "inbound-ssh" {
   security_group_id = aws_security_group.linux_security.id
 }
 
-resource "aws_security_group_rule" "inbound-http" {
-  type              = "ingress"
-  description       = "Allow 80 to anywhere"
-  from_port         = 80
-  to_port           = 80
-  protocol          = "tcp"
-  cidr_blocks       = ["0.0.0.0/0"]
-  security_group_id = aws_security_group.linux_security.id
-}
+# resource "aws_security_group_rule" "inbound-http" {
+#   type              = "ingress"
+#   description       = "Allow 80 to anywhere"
+#   from_port         = 80
+#   to_port           = 80
+#   protocol          = "tcp"
+#   cidr_blocks       = ["0.0.0.0/0"]
+#   security_group_id = aws_security_group.linux_security.id
+# }
 
-resource "aws_security_group_rule" "inbound-flask" {
-  type              = "ingress"
-  description       = "Allow 5000 to anywhere"
-  from_port         = 5000
-  to_port           = 5000
-  protocol          = "tcp"
-  cidr_blocks       = ["0.0.0.0/0"]
-  security_group_id = aws_security_group.linux_security.id
-}
+# resource "aws_security_group_rule" "inbound-flask" {
+#   type              = "ingress"
+#   description       = "Allow 5000 to anywhere"
+#   from_port         = 5000
+#   to_port           = 5000
+#   protocol          = "tcp"
+#   cidr_blocks       = ["0.0.0.0/0"]
+#   security_group_id = aws_security_group.linux_security.id
+# }
 
 
-resource "aws_security_group_rule" "inbound-https" {
-  type              = "ingress"
-  description       = "Allow 443 to anywhere"
-  from_port         = 443
-  to_port           = 443
-  protocol          = "tcp"
-  cidr_blocks       = ["0.0.0.0/0"]
-  security_group_id = aws_security_group.linux_security.id
-}
+# resource "aws_security_group_rule" "inbound-https" {
+#   type              = "ingress"
+#   description       = "Allow 443 to anywhere"
+#   from_port         = 443
+#   to_port           = 443
+#   protocol          = "tcp"
+#   cidr_blocks       = ["0.0.0.0/0"]
+#   security_group_id = aws_security_group.linux_security.id
+# }
 
 resource "aws_security_group_rule" "inbound-icmp" {
   type              = "ingress"
@@ -59,7 +59,7 @@ resource "aws_security_group_rule" "inbound-icmp" {
   from_port         = -1
   to_port           = -1
   protocol          = "icmp"
-  cidr_blocks       = ["0.0.0.0/0"]
+  cidr_blocks       = ["${chomp(data.http.myip.response_body)}/32"]
   security_group_id = aws_security_group.linux_security.id
 }
 

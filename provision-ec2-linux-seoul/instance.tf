@@ -4,7 +4,6 @@ data "template_file" "user_data" {
 }
 
 
-
 provider "aws" {
   region = var.aws_region
 }

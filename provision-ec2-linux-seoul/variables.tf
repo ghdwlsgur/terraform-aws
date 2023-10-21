@@ -30,7 +30,7 @@ variable "availability_zone" {
 
 variable "ec2_ami" {
   type        = string
-  description = "ec2 image"
-  default     = "ami-0cbec04a61be382d9"
+  description = "ec2 image (ubuntu 20.04/x86x64))"
+  default     = "ami-04341a215040f91bb"
 }
 
